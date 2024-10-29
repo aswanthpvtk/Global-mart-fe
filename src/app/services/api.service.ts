@@ -13,4 +13,6 @@ export class ApiService {
   getAllProducts(){
     return this.http.get(`${this.server_url}/all-products`)
   }
+
+  getAllProductsById
 }
