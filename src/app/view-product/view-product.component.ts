@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-view-product',
@@ -7,7 +8,9 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./view-product.component.css']
 })
 export class ViewProductComponent implements OnInit {
-  constructor(private router:ActivatedRoute){}
+
+  productData:any;
+  constructor(private router:ActivatedRoute,private apiService:ApiService){}
 
   ngOnInit(): void {
       this.router.params.subscribe((res:any)=>{
@@ -19,7 +22,25 @@ export class ViewProductComponent implements OnInit {
   }
 
   grtProductById(id:any){
+   this.apiService.getAllProductsById(id).subscribe({
+   next:(res)=>{
+    console.log("Products details");
+    console.log(res);
+    this.productData=res;
+   },
+   error:(res)=>{
+    console.log(res);
+   }
+   })
+  }
 
+  addToWishlist(product:any){
+    alert(product)
+
+  }
+
+  addToCart(product:any){
+    alert(product)
   }
 
 }
