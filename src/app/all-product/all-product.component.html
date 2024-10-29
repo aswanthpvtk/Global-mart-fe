@@ -1,0 +1,51 @@
+
+<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://www.hyderabad.lulumall.in/wp-content/uploads/2024/02/TVScreen-image-.png" class="d-block w-100" alt="..." height="400px">
+      </div>
+      <div class="carousel-item">
+        <img src="https://images.squarespace-cdn.com/content/v1/60f5050812f5033615c62cdc/7b611aad-5fa3-4a61-a473-11eeb56ef2d1/Cover.jpg" class="d-block w-100" alt="..." height="400px">
+      </div>
+      <div class="carousel-item">
+        <img src="https://images.squarespace-cdn.com/content/v1/60f5050812f5033615c62cdc/0c33e5c1-cfe7-4735-80b3-f255b618a8be/Lulu+Mall+Calendar+2020_3.jpg" class="d-block w-100" alt="..." height="350px">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" >
+            <div class="col mb-5" *ngFor="let item of allProducts">
+                <div class="card h-100">
+                    <!-- Product image-->
+                    <img class="card-img-top" [src]="item.image" alt="..." height="250px"
+                    routerLink="view-product/{{item.id}}" />
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product name-->
+                            <h5 class="fw-bolder">{{item.title.slice(0,20)}}..</h5>
+                            <!-- Product price-->
+                            {{item.price}}
+                        </div>
+                    </div>
+                    <!-- Product actions-->
+                    <div class="d-flex justify-content-between">
+                        <a  class="btn btn-outline-danger m-3" (click)="addToWishList(item)"><i class="fa-solid fa-heart"></i></a>
+                        <a  class="btn btn-outline-success m-3" (click)="addToCart(item)"><i class="fa-solid fa-cart-shopping"></i></a>
+
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</section>
